@@ -14,3 +14,5 @@ _Future_
   The calculator will calculate the courses a learner qualifies for in **all** universities/colleges.
 - Career Guidance Page
   Based on the future aspiration, give advise of which high school subjects the learner needs to take.
+- Tutor Recommendation Page
+  Based on the learner's current results, a tutor will be recommended to them using AI technology.
