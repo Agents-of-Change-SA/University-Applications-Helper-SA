@@ -1,0 +1,210 @@
+[
+  {
+    "university":"University of Cape Town",
+    "open_date":"2025-04-01",
+    "close_date":"2025-07-31",
+    "abbr":"UCT",
+    "prospectus":"https:\/\/uct.ac.za\/sites\/default\/files\/media\/documents\/uct_ac_za\/49\/2025_ug_prospectus.pdf",
+    "application_link":"https:\/\/applyonline.uct.ac.za\/"
+  },
+  {
+    "university":"University of Fort Hare",
+    "open_date":"2025-06-01",
+    "close_date":"2025-10-31",
+    "abbr":"UFH",
+    "prospectus":"https:\/\/www.ufh.ac.za\/apply\/Study-at-Fort-Hare-2024.pdf",
+    "application_link":"https:\/\/ienabler.ufh.ac.za\/pls\/prodi41\/gen.gw1pkg.gw1view"
+  },
+  {
+    "university":"University of the Free State",
+    "open_date":"2025-04-01",
+    "close_date":"2025-09-30",
+    "abbr":"UFS",
+    "prospectus":"https:\/\/www.ufs.ac.za\/prospective\/prospective-students\/undergraduate\/prospectus",
+    "application_link":"https:\/\/apply.ufs.ac.za\/"
+  },
+  {
+    "university":"University of Johannesburg",
+    "open_date":"2025-04-01",
+    "close_date":"2025-10-31",
+    "abbr":"UJ",
+    "prospectus":"https:\/\/assets.apply.org.za\/u-files\/Prospectuses\/UJ2026.pdf",
+    "application_link":"https:\/\/uj.ac.za\/apply"
+  },
+  {
+    "university":"University of KwaZulu Natal",
+    "open_date":"2025-03-01",
+    "close_date":"2025-11-30",
+    "abbr":"UKZN",
+    "prospectus":"https:\/\/ww1.applications.ukzn.ac.za\/prospectus\/",
+    "application_link":"https:\/\/cao.ac.za"
+  },
+  {
+    "university":"University of Limpopo",
+    "open_date":"2025-03-31",
+    "close_date":"2025-09-29",
+    "abbr":"UL",
+    "prospectus":"https:\/\/www.ul.ac.za\/wp-content\/uploads\/2025\/03\/Undergraduate-Prospectus-2026.pdf",
+    "application_link":"https:\/\/ulc-prod-webserver.ul.ac.za\/pls\/prodi41\/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP"
+  },
+  {
+    "university":"University of Mpumalanga",
+    "open_date":"2025-06-01",
+    "close_date":"2025-11-30",
+    "abbr":"UM",
+    "prospectus":"https:\/\/www.ump.ac.za\/getattachment\/Study-with-us\/Application-Process\/Online-Applications\/Undergraduate-Programmes.pdf.aspx?lang=en-US",
+    "application_link":"https:\/\/www.ump.ac.za\/Study-with-us\/Application-Process\/Online-Applications"
+  },
+  {
+    "university":"North-West University",
+    "open_date":"2025-04-01",
+    "close_date":"2025-08-31",
+    "abbr":"NWU",
+    "prospectus":"https:\/\/studies.nwu.ac.za\/sites\/studies.nwu.ac.za\/files\/files\/undergrad\/2025\/2025Grade-12-Prospectus.pdf",
+    "application_link":"https:\/\/applynow.nwu.ac.za\/OnlineApplication\/"
+  },
+  {
+    "university":"Nelson Mandela University",
+    "open_date":"2025-04-01",
+    "close_date":"2025-09-30",
+    "abbr":"Mandela",
+    "prospectus":"https:\/\/www.mandela.ac.za\/www-new\/media\/Store\/documents\/StudyAtMandela\/QuickGuides\/Apply\/2024-Full-Undergraduate-Guide.pdf",
+    "application_link":"https:\/\/applyonline.mandela.ac.za\/"
+  },
+  {
+    "university":"Rhodes University",
+    "open_date":"2025-04-01",
+    "close_date":"2025-11-15",
+    "abbr":"RU",
+    "prospectus":"https:\/\/www.ru.ac.za\/admissiongateway\/application\/entryrequirements\/",
+    "application_link":"https:\/\/ross.ru.ac.za\/"
+  },
+  {
+    "university":"University of South Africa(UNISA)*",
+    "open_date":"2025-10-15",
+    "close_date":"2025-11-15",
+    "abbr":"UNISA",
+    "prospectus":"https:\/\/www.unisa.ac.za\/static\/myunisa\/Content\/study%20at%20unisa\/docs\/Study-at-Unisa-2020.pdf",
+    "application_link":"https:\/\/www.unisa.ac.za\/sites\/corporate\/default\/Apply-for-admission"
+  },
+  {
+    "university":"Stellenbosch University",
+    "open_date":"2025-04-01",
+    "close_date":"2025-07-31",
+    "abbr":"SUN",
+    "prospectus":"https:\/\/blogs.sun.ac.za\/open-day\/files\/2024\/06\/2025-Admission-booklet-Eng.pdf",
+    "application_link":"https:\/\/www.sun.ac.za\/english\/maties\/apply"
+  },
+  {
+    "university":"University of Pretoria",
+    "open_date":"2025-04-01",
+    "close_date":"2025-06-30",
+    "abbr":"UP",
+    "prospectus":"https:\/\/www.up.ac.za\/media\/shared\/434\/Apply\/up-application-process-2025.zp246407.pdf",
+    "application_link":"https:\/\/upnet.up.ac.za\/upapply\/signon.html"
+  },
+  {
+    "university":"University of the Western Cape",
+    "open_date":"2025-04-02",
+    "close_date":"2025-09-30",
+    "abbr":"UWC",
+    "prospectus":"https:\/\/media.portmoni.com\/56497\/Admission-Requirements-2025.pdf",
+    "application_link":"https:\/\/student.uwc.ac.za\/"
+  },
+  {
+    "university":"University of the Witwatersrand",
+    "open_date":"2025-04-01",
+    "close_date":"2025-09-30",
+    "abbr":"Wits",
+    "prospectus":"https:\/\/www.wits.ac.za\/media\/wits-university\/study\/schools-liason\/documents\/Wits%20SLO%20Grade%2012_100125.pdf",
+    "application_link":"http:\/\/www.wits.ac.za\/applications\/"
+  },
+  {
+    "university":"Walter Sisulu University",
+    "open_date":"2025-06-01",
+    "close_date":"2025-10-31",
+    "abbr":"WSU",
+    "prospectus":"https:\/\/www.wsu.ac.za\/index.php\/en\/study-with-us\/2024-prospectuses?layout=table",
+    "application_link":"http:\/\/itsapp.cle.intra.wsu.ac.za:7771\/pls\/prodi03\/w99pkg.mi_login"
+  },
+  {
+    "university":"University of Venda",
+    "open_date":"2025-05-08",
+    "close_date":"2025-09-26",
+    "abbr":"UNIVEN",
+    "prospectus":"https:\/\/www.univen.ac.za\/wp-content\/uploads\/2025\/02\/2026_UNDERGRADUATE-STUDENT-INFORMATION-BROCHURE-.pdf",
+    "application_link":"https:\/\/www.univen.ac.za\/students\/student-support-services\/how-to-apply\/apply-online\/"
+  },
+  {
+    "university":"University of Zululand",
+    "open_date":"2025-03-01",
+    "close_date":"2025-10-31",
+    "abbr":"UNIZULU",
+    "prospectus":"https:\/\/www.unizulu.ac.za\/wp-content\/uploads\/2025\/02\/2026-Brochure-for-undergraduate.pdf",
+    "application_link":"https:\/\/cao.ac.za"
+  },
+  {
+    "university":"Sol Plaatje University",
+    "open_date":"2025-04-01",
+    "close_date":"2025-10-31",
+    "abbr":"SPU",
+    "prospectus":"https:\/\/www.spu.ac.za\/wp-content\/uploads\/2024\/04\/SPU-2025-UG-Prospectus.pdf",
+    "application_link":"https:\/\/ienabler.spu.ac.za\/pls\/prodi41\/w99pkg.mi_login?numtype=S"
+  },
+  {
+    "university":"Cape Peninsula University of Technology",
+    "open_date":"2025-05-12",
+    "close_date":"2025-09-30",
+    "abbr":"CPUT",
+    "prospectus":"https:\/\/s3.amazonaws.com\/document.issuu.com\/250116125322-1c43fd2c77473a69be16fd69ba2ed24e\/original.file?AWSAccessKeyId=ASIATDDRE5J72XI4IYBJ&Signature=s9h0ITNRHkDg1aHF10Gy7Nw8nhw%3D&x-amz-security-token=FwoGZXIvYXdzEL3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDPDxKHi4FIvQ9tH7oCLkAi2c1T5JKEQD%2B0dPVg1h5R7KcDIAstKDF3c0panSUBcZjWulDPyI%2Fy2sqv%2BxYSJ6ocMkEGlS8f9sWqLH%2ByXd%2BGJDJeVBYIsiQJH8AOsuJc2ZW5t1UANmvUSeQBkfMfxeO9uoCLdcC15jtmUpiFwuJDBfTO1eir8nMU5f3dCbO67EgbdHbXungrkHKbLiRf53Hweh21v6AkHQEC8D2d3vL6CQjSju3D9PawPmuUyAiWIAWQ%2F7ML%2Fw%2Be3AGqUhmGM38btGdioHWwicCAcqhDkL4NwddbKwLIApFdrmLUiRR4XCwHTdd5PJbfuHogWsi%2BLx8AdnXpI4H6v9cUcR8m5LHZgjci1ORW71MAHzQsaHqp7DJxFHancXzwzib6VwIIA7n4HsL%2Bh%2FQb0xjFNpBnrhnAYfFI28GdfGgGVnNBOHcoEa275pz8mfoXIfNWYv1JaTOf3AUwLiM0Ccy6K35W%2Fh5vlfcoiFKMDUwr8GMinsvLrmAFNFHndv36HRCSp5kANO8s73eWjhic%2FFvMFjsMVqI0fDFUCFfQ%3D%3D&Expires=1743830476",
+    "application_link":"https:\/\/alecto.cput.ac.za\/pls\/prodi41\/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP"
+  },
+  {
+    "university":"Central University of Technology",
+    "open_date":"2025-05-13",
+    "close_date":"2025-09-30",
+    "abbr":"CUT",
+    "prospectus":"https:\/\/cms.cut.ac.za\/Files\/Froala\/98dbd744-3e0a-4e80-9939-2dfc1f510f78.pdf",
+    "application_link":"https:\/\/enroll.cut.ac.za\/pls\/prodi41\/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP"
+  },
+  {
+    "university":"Durban University of Technology",
+    "open_date":"2025-04-01",
+    "close_date":"2025-11-30",
+    "abbr":"DUT",
+    "prospectus":"https:\/\/www.dut.ac.za\/student_portal\/student_registration\/how_to",
+    "application_link":"https:\/\/cao.ac.za"
+  },
+  {
+    "university":"Tswane University of Technology",
+    "open_date":"2025-04-01",
+    "close_date":"2025-09-30",
+    "abbr":"TUT",
+    "prospectus":"https:\/\/tut.ac.za\/images\/docs\/study\/2026General-Information-First-Year-Enrolment.pdf",
+    "application_link":"https:\/\/ienabler.tut.ac.za\/pls\/prodi41\/gen.gw1pkg.gw1startup?x_processcode=ITS_OAP"
+  },
+  {
+    "university":"Vaal University of Technology",
+    "open_date":"2025-04-01",
+    "close_date":"2025-09-30",
+    "abbr":"VUT",
+    "prospectus":"https:\/\/vut.ac.za\/wp-content\/uploads\/2025\/04\/2026-A4-flyer-double-sided.pdf",
+    "application_link":"https:\/\/ienabler.vut.ac.za\/pls\/prodi03\/w99pkg.mi_login"
+  },
+  {
+    "university":"Mangosuthu University of Technology",
+    "open_date":"2025-01-01",
+    "close_date":"2025-09-30",
+    "abbr":"MUT",
+    "prospectus":"https:\/\/www.mut.ac.za\/wp-content\/uploads\/2023\/09\/Undergraduate-Prospectus.pdf",
+    "application_link":"https:\/\/cao.ac.za"
+  },
+  {
+    "university":"Ekurhuleni West College",
+    "open_date":"2025-04-05",
+    "close_date":"2025-09-30",
+    "abbr":"EWC",
+    "prospectus":"http:\/\/www.ewc.edu.za\/docs\/EWC_Prospectus_2023.pdf",
+    "application_link":"http:\/\/www.ewc.edu.za\/new_students_application_instructions.htm"
+  }
+]

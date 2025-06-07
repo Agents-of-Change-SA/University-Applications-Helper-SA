@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: Univice API
+  version: 1.0.0
+  description: |
+    API for Univice — a public platform helping learners discover career paths and course eligibility.
+    Open Source & Noncommercial.
+  contact:
+    name: Univice Project Team
+    email: support@univice.org
+    url: https://univice.org
+
+servers:
+  - url: https://api.univice.org/v1
+
+paths:
+  /register/:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, email, password]
+              properties:
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '201':
+          description: User created
+        '400':
+          description: Invalid input
+
+  /login/:
+    post:
+      summary: Authenticate a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username, password]
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: JWT token issued
+        '401':
+          description: Unauthorized
+
+  /check-courses/:
+    post:
+      summary: Check courses the student qualifies for
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                subject_scores:
+                  type: object
+                  additionalProperties:
+                    type: integer
+                  example:
+                    Mathematics: 80
+                    English: 75
+                    Physical Sciences: 70
+      responses:
+        '200':
+          description: List of matching courses, use ones from universities unique filter.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  courses:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        university:
+                          type: string
+                        course:
+                          type: string
+  /career-guidance/:
+    post:
+      summary: Get subject advice based on future aspiration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                aspiration:
+                  type: string
+                  example: Doctor
+      responses:
+        '200':
+          description: Suggested high school subjects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recommended_subjects:
+                    type: array
+                    items:
+                      type: string
+  /admin/add-course/:
+    post:
+      summary: Admin-only Add a course with subject requirements
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [course_name, university, subject_requirements]
+              properties:
+                course_name:
+                  type: string
+                university:
+                  type: string
+                subject_requirements:
+                  type: object
+                  additionalProperties:
+                    type: integer
+                  example:
+                    Mathematics: 60
+                    English: 50
+      responses:
+        '201':
+          description: Course added
+        '403':
+          description: Forbidden
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
