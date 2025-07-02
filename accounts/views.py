@@ -1,52 +1,32 @@
 from django.shortcuts import render
-from rest_framework import generics
-from .serializers import RegisterSerializer
-from django.contrib.auth import get_user_model
-from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.authtoken.models import Token
-from rest_framework.response import Response     
+from .serializers import CustomUserSerializer, ChooseSubjectsSerializer, ComputeAPSSerializer, GetCoursesSerializer
+from rest_framework import generics, status
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
-from rest_framework import status
-from rest_framework.decorators import api_view, permission_classes
+from django.contrib.auth import authenticate
+from django.contrib.auth.views import LoginView
+from .models import ChooseSubjects, ComputeAPS, GetCourses
+from django.http import JsonResponse
 
-# Create your views here.
-User = get_user_model()
+# # Create your views here.
+class CreateUser(generics.CreateAPIView):
+    authentication_classes = ()
+    permission_classes = ()
+    serializer_class = CustomUserSerializer
 
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = RegisterSerializer
+class ChooseSubjectsView(generics.RetrieveAPIView):
+    def get_queryset(self):
+        queryset=ChooseSubjects.objects.filter(id=self.kwargs["pk"])
+        return queryset
+    serializer_class = ChooseSubjectsSerializer
 
-# LOGIN
-class CustomAuthToken(ObtainAuthToken):
-    def post(self, request, *args, **kwargs):
-        response = super().post(request, *args, **kwargs)
-        token = Token.objects.get(key=response.data['token'])
-        user = token.user
-        return Response({
-            'token': token.key,
-            'user_id': user.pk,
-            'username': user.username,
-            'email': user.email,
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-        })
+class ComputeAPSView(generics.RetrieveAPIView):
+    def get_queryset(self):
+        queryset=ComputeAPS.objects.filter(id=self.kwargs["pk"])
+        return queryset
+    serializer_class = ComputeAPSSerializer
 
-# LOGOUT
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def logout_view(request):
-    request.user.auth_token.delete()
-    return Response({"message": "Logged out successfully."}, status=status.HTTP_200_OK)
-
-# PROFILE
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def profile_view(request):
-    user = request.user
-    return Response({
-        'username': user.username,
-        'email': user.email,
-        'first_name': user.first_name,
-        'last_name': user.last_name
-    })
+class GetCoursesView(generics.RetrieveAPIView):
+    def get_queryset(self):
+        queryset=GetCourses.objects.filter(id=self.kwargs["pk"])
+        return queryset
+    serializer_class = GetCoursesSerializer

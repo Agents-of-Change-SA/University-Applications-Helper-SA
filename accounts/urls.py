@@ -1,11 +1,9 @@
-from django.urls import path
-from .views import RegisterView, CustomAuthToken, logout_view, profile_view
-
-app_name = 'accounts'
+from django.urls import include, path
+from .views import CreateUser, ChooseSubjectsView, ComputeAPSView, GetCoursesView
 
 urlpatterns = [
-    path('register/', RegisterView.as_view(), name='register'),
-    path('login/', CustomAuthToken.as_view(), name='login'),
-    path('logout/', logout_view, name='logout'),
-    path('profile/', profile_view, name='profile'),
-]
+    path('users/', CreateUser.as_view(), name='user_create'),
+    path('stream/', ChooseSubjectsView.as_view(), name="stream"),
+    path('computeaps/', ComputeAPSView.as_view(), name='computeaps'),
+    path('getcourses/', GetCoursesView.as_view(), name="get_courses")
+ ]
