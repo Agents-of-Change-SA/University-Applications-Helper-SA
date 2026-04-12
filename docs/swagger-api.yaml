@@ -1,0 +1,1084 @@
+openapi: 3.0.3
+info:
+  title: Univice API
+  description: |
+    Backend API for the Univice mobile application — a South African learner guidance platform.
+    This spec covers all endpoints the React Native frontend consumes, derived from the frontend
+    service layer, type definitions, and feature specs.
+
+    **Base URL**: `https://<host>/api/`
+
+    **Authentication**: Token-based (`Authorization: Token <token>`). Auth endpoints are public.
+  version: "1.0.0"
+  contact:
+    email: gxagxakatleho@gmail.com
+
+servers:
+  - url: http://localhost:8000/api
+    description: Local development
+
+tags:
+  - name: Auth
+    description: Registration, login, logout, password reset
+  - name: User Details
+    description: Learner profile (name, surname, age, career aspiration)
+  - name: School Profile
+    description: School name and subjects with marks
+  - name: Career Aspirations
+    description: CRUD for saved career goals
+  - name: Career Guidance
+    description: Subject recommendations based on career aspiration
+  - name: Courses
+    description: Course search and listing
+  - name: Tutors
+    description: Tutor listing
+  - name: Application Dates
+    description: Institution application dates, fees, and portal links
+
+# ──────────────────────────────────────────────
+# SECURITY
+# ──────────────────────────────────────────────
+security:
+  - tokenAuth: []
+
+components:
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: "Token authentication. Format: `Token <your-token>`"
+
+  # ──────────────────────────────────────────
+  # SCHEMAS
+  # ──────────────────────────────────────────
+  schemas:
+
+    # --- Auth ---
+    LoginRequest:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+          example: thandi
+        password:
+          type: string
+          format: password
+          example: "P@ssw0rd1"
+
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b"
+        user_id:
+          type: integer
+          example: 1
+        username:
+          type: string
+          example: thandi
+        email:
+          type: string
+          format: email
+          example: thandi@example.com
+        first_name:
+          type: string
+          example: Thandi
+        last_name:
+          type: string
+          example: Mkhize
+
+    RegisterRequest:
+      type: object
+      required: [username, first_name, last_name, email, password]
+      properties:
+        username:
+          type: string
+          example: thandi
+        first_name:
+          type: string
+          minLength: 2
+          example: Thandi
+        last_name:
+          type: string
+          minLength: 2
+          example: Mkhize
+        email:
+          type: string
+          format: email
+          example: thandi@example.com
+        password:
+          type: string
+          format: password
+          description: "Min 8 chars, 1 uppercase, 1 lowercase, 1 digit, 1 special char"
+          example: "Str0ng!Pass"
+
+    RegisterResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        username:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Logged out successfully."
+
+    ProfileResponse:
+      type: object
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        first_name:
+          type: string
+        last_name:
+          type: string
+
+    # --- User Details ---
+    UserDetails:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: Thandi
+        surname:
+          type: string
+          example: Mkhize
+        age:
+          type: integer
+          example: 17
+        career_aspiration:
+          type: string
+          nullable: true
+          example: "Software Engineer"
+
+    CreateUserDetailsRequest:
+      type: object
+      required: [name, surname, age]
+      properties:
+        name:
+          type: string
+          example: Thandi
+        surname:
+          type: string
+          example: Mkhize
+        age:
+          type: integer
+          minimum: 1
+          example: 17
+        career_aspiration:
+          type: string
+          nullable: true
+          example: "Software Engineer"
+
+    UpdateUserDetailsRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        surname:
+          type: string
+        age:
+          type: integer
+        career_aspiration:
+          type: string
+          nullable: true
+
+    # --- School Profile ---
+    SchoolSubject:
+      type: object
+      required: [name, percentage, level]
+      properties:
+        name:
+          type: string
+          example: Mathematics
+        percentage:
+          type: integer
+          minimum: 0
+          maximum: 100
+          example: 78
+        level:
+          type: integer
+          minimum: 1
+          maximum: 7
+          example: 7
+
+    SchoolProfile:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        school_name:
+          type: string
+          example: "Pretoria High School for Girls"
+        subjects:
+          type: array
+          items:
+            $ref: "#/components/schemas/SchoolSubject"
+
+    SchoolProfileRequest:
+      type: object
+      required: [name, subjects]
+      properties:
+        name:
+          type: string
+          example: "Pretoria High School for Girls"
+        subjects:
+          type: array
+          items:
+            $ref: "#/components/schemas/SchoolSubject"
+          minItems: 1
+
+    # --- Career Aspirations ---
+    CareerAspiration:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        aspiration:
+          type: string
+          example: "Software Engineer"
+        created_at:
+          type: string
+          format: date-time
+          example: "2025-01-15T10:00:00Z"
+
+    CreateAspirationRequest:
+      type: object
+      required: [aspiration]
+      properties:
+        aspiration:
+          type: string
+          example: "Software Engineer"
+
+    UpdateAspirationRequest:
+      type: object
+      required: [aspiration]
+      properties:
+        aspiration:
+          type: string
+          example: "Data Scientist"
+
+    # --- Career Guidance ---
+    SubjectRecommendation:
+      type: object
+      properties:
+        subject:
+          type: string
+          example: Mathematics
+        explanation:
+          type: string
+          example: "Core requirement for CS degrees and logical thinking"
+
+    CareerGuidanceResponse:
+      type: object
+      properties:
+        aspiration:
+          type: string
+          example: "Software Engineer"
+        recommendations:
+          type: array
+          items:
+            $ref: "#/components/schemas/SubjectRecommendation"
+
+    # --- Courses ---
+    CourseResult:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        course_name:
+          type: string
+          example: "Bachelor of Science in Computer Science"
+        institution:
+          type: string
+          example: "University of Cape Town"
+        aps_summary:
+          type: string
+          example: "APS: 34+"
+        requirements:
+          type: string
+          example: "Mathematics 60%, English 50%"
+
+    CourseSearchResponse:
+      type: object
+      properties:
+        top_result:
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/CourseResult"
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/CourseResult"
+
+    # --- Tutors ---
+    Tutor:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "1"
+        name:
+          type: string
+          example: "Thabo Mokoena"
+        subject:
+          type: string
+          example: Mathematics
+        contact:
+          type: string
+          example: "+27 XX XXX XXXX"
+
+    # --- Application Dates ---
+    ApplicationEntry:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          example: 1
+        institution_name:
+          type: string
+          example: "University of Cape Town"
+        open_date:
+          type: string
+          format: date
+          description: "ISO 8601 date (YYYY-MM-DD)"
+          example: "2026-03-01"
+        close_date:
+          type: string
+          format: date
+          description: "ISO 8601 date (YYYY-MM-DD)"
+          example: "2026-06-30"
+        application_fee:
+          type: string
+          description: "Decimal string in South African Rand"
+          example: "100.00"
+        portal_url:
+          type: string
+          format: uri
+          example: "https://applyonline.uct.ac.za"
+
+    ApplicationEntryWrite:
+      type: object
+      required: [institution_name, open_date, close_date, application_fee, portal_url]
+      properties:
+        institution_name:
+          type: string
+          maxLength: 255
+          example: "University of Cape Town"
+        open_date:
+          type: string
+          format: date
+          example: "2026-03-01"
+        close_date:
+          type: string
+          format: date
+          description: "Must be >= open_date"
+          example: "2026-06-30"
+        application_fee:
+          type: number
+          format: decimal
+          minimum: 0
+          example: 100.00
+        portal_url:
+          type: string
+          format: uri
+          maxLength: 500
+          example: "https://applyonline.uct.ac.za"
+
+    # --- Common ---
+    ValidationError:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          type: string
+      example:
+        institution_name: ["This field is required."]
+        close_date: ["Close date must be on or after open date."]
+
+    NotFoundError:
+      type: object
+      properties:
+        detail:
+          type: string
+          example: "Not found."
+
+
+# ──────────────────────────────────────────────
+# PATHS
+# ──────────────────────────────────────────────
+paths:
+
+  # ============================================
+  # AUTH
+  # ============================================
+  /accounts/register/:
+    post:
+      tags: [Auth]
+      summary: Register a new user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterRequest"
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RegisterResponse"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+              examples:
+                weak_password:
+                  value:
+                    password: ["Password must be at least 8 characters long."]
+                duplicate_email:
+                  value:
+                    email: ["This field must be unique."]
+
+  /accounts/login/:
+    post:
+      tags: [Auth]
+      summary: Login and obtain auth token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        "400":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  non_field_errors:
+                    type: array
+                    items:
+                      type: string
+                    example: ["Unable to log in with provided credentials."]
+
+  /accounts/logout/:
+    post:
+      tags: [Auth]
+      summary: Logout (delete auth token)
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+              example:
+                message: "Logged out successfully."
+        "401":
+          description: Not authenticated
+
+  /accounts/profile/:
+    get:
+      tags: [Auth]
+      summary: Get current user profile
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfileResponse"
+        "401":
+          description: Not authenticated
+
+  # ============================================
+  # USER DETAILS
+  # ============================================
+  /user-details/:
+    get:
+      tags: [User Details]
+      summary: Get learner details
+      responses:
+        "200":
+          description: Learner details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDetails"
+        "404":
+          description: No details saved yet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+    post:
+      tags: [User Details]
+      summary: Create learner details
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserDetailsRequest"
+      responses:
+        "201":
+          description: Details created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDetails"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+
+    patch:
+      tags: [User Details]
+      summary: Update learner details
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateUserDetailsRequest"
+      responses:
+        "200":
+          description: Details updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserDetails"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+
+  # ============================================
+  # SCHOOL PROFILE
+  # ============================================
+  /school-profile/:
+    get:
+      tags: [School Profile]
+      summary: Get learner's school profile
+      responses:
+        "200":
+          description: School profile with subjects
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolProfile"
+        "404":
+          description: No school profile saved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+    post:
+      tags: [School Profile]
+      summary: Create or update school profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SchoolProfileRequest"
+      responses:
+        "200":
+          description: School profile saved
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SchoolProfile"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+
+  # ============================================
+  # CAREER ASPIRATIONS
+  # ============================================
+  /career-aspirations/:
+    get:
+      tags: [Career Aspirations]
+      summary: List all career aspirations
+      responses:
+        "200":
+          description: List of aspirations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CareerAspiration"
+
+    post:
+      tags: [Career Aspirations]
+      summary: Create a career aspiration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAspirationRequest"
+      responses:
+        "201":
+          description: Aspiration created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerAspiration"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+
+  /career-aspirations/{id}/:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+    put:
+      tags: [Career Aspirations]
+      summary: Update a career aspiration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateAspirationRequest"
+      responses:
+        "200":
+          description: Aspiration updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerAspiration"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+    delete:
+      tags: [Career Aspirations]
+      summary: Delete a career aspiration
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+
+  # ============================================
+  # CAREER GUIDANCE
+  # ============================================
+  /career-guidance/:
+    get:
+      tags: [Career Guidance]
+      summary: Get subject recommendations for a career aspiration
+      parameters:
+        - name: aspiration
+          in: query
+          required: true
+          schema:
+            type: string
+          description: "Career aspiration to get guidance for"
+          example: "Software Engineer"
+      responses:
+        "200":
+          description: Guidance with subject recommendations
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CareerGuidanceResponse"
+              examples:
+                software_engineer:
+                  value:
+                    aspiration: "Software Engineer"
+                    recommendations:
+                      - subject: Mathematics
+                        explanation: "Core requirement for CS degrees and logical thinking"
+                      - subject: Information Technology
+                        explanation: "Direct exposure to programming concepts"
+                      - subject: Physical Sciences
+                        explanation: "Develops analytical and problem-solving skills"
+                unknown:
+                  value:
+                    aspiration: "Astronaut"
+                    recommendations: []
+
+  # ============================================
+  # COURSES
+  # ============================================
+  /courses/:
+    get:
+      tags: [Courses]
+      summary: Search / list courses
+      parameters:
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Search by course name or institution"
+      responses:
+        "200":
+          description: Course search results
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CourseSearchResponse"
+              example:
+                top_result:
+                  id: "1"
+                  course_name: "Bachelor of Science in Computer Science"
+                  institution: "University of Cape Town"
+                  aps_summary: "APS: 34+"
+                  requirements: "Mathematics 60%, English 50%"
+                results:
+                  - id: "1"
+                    course_name: "Bachelor of Science in Computer Science"
+                    institution: "University of Cape Town"
+                    aps_summary: "APS: 34+"
+                    requirements: "Mathematics 60%, English 50%"
+
+  # ============================================
+  # TUTORS
+  # ============================================
+  /tutors/:
+    get:
+      tags: [Tutors]
+      summary: List available tutors
+      parameters:
+        - name: subject
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Filter by subject"
+          example: Mathematics
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Search by tutor name"
+      responses:
+        "200":
+          description: List of tutors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Tutor"
+
+  # ============================================
+  # APPLICATION DATES
+  # ============================================
+  /application-dates/:
+    get:
+      tags: [Application Dates]
+      summary: List application entries with filtering
+      description: |
+        Returns a list of institution application date entries.
+        Supports filtering by institution name, date ranges, and fee ranges via query parameters.
+        Supports ordering and search.
+      parameters:
+        - name: institution_name
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Case-insensitive partial match on institution name"
+          example: "Cape Town"
+        - name: open_date_from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: "Filter entries with open_date >= this value"
+          example: "2026-03-01"
+        - name: open_date_to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: "Filter entries with open_date <= this value"
+          example: "2026-06-01"
+        - name: close_date_from
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: "Filter entries with close_date >= this value"
+          example: "2026-06-01"
+        - name: close_date_to
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+          description: "Filter entries with close_date <= this value"
+          example: "2026-12-31"
+        - name: min_fee
+          in: query
+          required: false
+          schema:
+            type: number
+          description: "Filter entries with application_fee >= this value"
+          example: 0
+        - name: max_fee
+          in: query
+          required: false
+          schema:
+            type: number
+          description: "Filter entries with application_fee <= this value"
+          example: 200
+        - name: search
+          in: query
+          required: false
+          schema:
+            type: string
+          description: "Full-text search on institution_name"
+        - name: ordering
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - institution_name
+              - "-institution_name"
+              - open_date
+              - "-open_date"
+              - close_date
+              - "-close_date"
+              - application_fee
+              - "-application_fee"
+          description: "Order results by field. Prefix with `-` for descending."
+          example: "institution_name"
+      responses:
+        "200":
+          description: List of application entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ApplicationEntry"
+              example:
+                - id: 1
+                  institution_name: "University of Cape Town"
+                  open_date: "2026-03-01"
+                  close_date: "2026-06-30"
+                  application_fee: "100.00"
+                  portal_url: "https://applyonline.uct.ac.za"
+                - id: 2
+                  institution_name: "University of the Witwatersrand"
+                  open_date: "2026-04-01"
+                  close_date: "2026-09-30"
+                  application_fee: "200.00"
+                  portal_url: "https://self-service.wits.ac.za"
+
+    post:
+      tags: [Application Dates]
+      summary: Create an application entry
+      description: "Admin-only. Creates a new institution application date entry."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplicationEntryWrite"
+      responses:
+        "201":
+          description: Entry created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplicationEntry"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+              examples:
+                date_order:
+                  summary: Close date before open date
+                  value:
+                    close_date: ["Close date must be on or after open date."]
+                missing_fields:
+                  summary: Missing required fields
+                  value:
+                    institution_name: ["This field is required."]
+                    open_date: ["This field is required."]
+
+  /application-dates/{id}/:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: "Application entry ID"
+
+    get:
+      tags: [Application Dates]
+      summary: Retrieve a single application entry
+      responses:
+        "200":
+          description: Application entry detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplicationEntry"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+    put:
+      tags: [Application Dates]
+      summary: Update an application entry (full)
+      description: "Admin-only. Replaces all fields."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ApplicationEntryWrite"
+      responses:
+        "200":
+          description: Entry updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplicationEntry"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+    patch:
+      tags: [Application Dates]
+      summary: Partially update an application entry
+      description: "Admin-only. Updates only provided fields."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                institution_name:
+                  type: string
+                open_date:
+                  type: string
+                  format: date
+                close_date:
+                  type: string
+                  format: date
+                application_fee:
+                  type: number
+                  format: decimal
+                portal_url:
+                  type: string
+                  format: uri
+      responses:
+        "200":
+          description: Entry updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApplicationEntry"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationError"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+
+    delete:
+      tags: [Application Dates]
+      summary: Delete an application entry
+      description: "Admin-only."
+      responses:
+        "204":
+          description: Deleted
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"

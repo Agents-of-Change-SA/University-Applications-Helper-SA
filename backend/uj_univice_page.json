@@ -1,0 +1,339 @@
+{
+  "name": "University of Johannesburg",
+  "abbr": "UJ",
+  "qualifications": [
+    {
+      "id": "uj-accounting",
+      "name": "Accounting",
+      "qualification_code": "B3A17Q",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Manager, Accountant, Auditor, Tax Consultant.",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [
+          {
+            "subject": "English",
+            "minimum_level": 4
+          }
+        ],
+        "one_of": [],
+        "disallowed": [
+          {
+            "subject": "Mathematical Literacy"
+          }
+        ]
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-business",
+      "name": "Business",
+      "qualification_code": "MQ",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Manager, HRD Manager,",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [],
+        "one_of": [],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-management",
+      "name": "Management",
+      "qualification_code": "B34BM",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Relations Manager, Development Manager, Manager, General Manager, Facilitator, Management Entrepreneur, Innovator.",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [
+          {
+            "subject": "English",
+            "minimum_level": 4
+          }
+        ],
+        "one_of": [
+          {
+            "subject": "Technical Mathematics",
+            "minimum_level": 4
+          }
+        ],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-economics-and",
+      "name": "Economics And",
+      "qualification_code": "4Q",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Econometrician,",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [],
+        "one_of": [],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-econometrics",
+      "name": "Econometrics",
+      "qualification_code": "B3N14",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Analyst, Forecaster, Planner.",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [
+          {
+            "subject": "English",
+            "minimum_level": 4
+          }
+        ],
+        "one_of": [],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-entrepreneurial",
+      "name": "Entrepreneurial",
+      "qualification_code": "MQ",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Owner, Marketing",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [],
+        "one_of": [],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-entrepreneurial-management",
+      "name": "Entrepreneurial Management",
+      "qualification_code": "B1CEM",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Owner, Marketing Manager, Business Manager, Manager.",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [
+          {
+            "subject": "English",
+            "minimum_level": 4
+          }
+        ],
+        "one_of": [
+          {
+            "subject": "Technical Mathematics",
+            "minimum_level": 4
+          }
+        ],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-finance",
+      "name": "Finance",
+      "qualification_code": "B3F17Q",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "Manager, Stockbroker, Financial Consultant, Advisor.",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [
+          {
+            "subject": "English",
+            "minimum_level": 4
+          }
+        ],
+        "one_of": [],
+        "disallowed": [
+          {
+            "subject": "Mathematical Literacy"
+          }
+        ]
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-industrial",
+      "name": "Industrial",
+      "qualification_code": "PQ",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "HR Practitioners dealing",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [],
+        "one_of": [],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    },
+    {
+      "id": "uj-psychology",
+      "name": "Psychology",
+      "qualification_code": "B34IP",
+      "faculty": null,
+      "qualification_type": "Bachelor of Commerce Degree",
+      "duration": "3 years",
+      "description": "the problems or challenges from employees’ relationship the work environment.",
+      "minimum_aps": null,
+      "aps_rules": [
+        {
+          "type": "subject_dependent_minimum_aps",
+          "conditions": []
+        }
+      ],
+      "subject_requirements": {
+        "mandatory": [
+          {
+            "subject": "English",
+            "minimum_level": 4
+          }
+        ],
+        "one_of": [
+          {
+            "subject": "Technical Mathematics",
+            "minimum_level": 4
+          }
+        ],
+        "disallowed": []
+      },
+      "selection_requirements": [
+        {
+          "type": "possible_portfolio",
+          "required": false,
+          "notes": null
+        }
+      ]
+    }
+  ]
+}
