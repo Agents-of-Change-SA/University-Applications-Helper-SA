@@ -123,6 +123,29 @@ export interface CourseSearchResponse {
   results: CourseResult[];
 }
 
+// === Qualification Check ===
+
+export interface SubjectRequirement {
+  subjectName: string;
+  minimumPercentage: number;
+}
+
+export interface ExtendedCourse extends CourseResult {
+  minimumAPS: number;
+  subjectRequirements: SubjectRequirement[];
+}
+
+export interface QualificationCheckRequest {
+  subjects: SchoolSubject[];
+}
+
+export interface QualificationCheckResponse {
+  aps: number;
+  aspirationMatches: ExtendedCourse[];
+  qualifyingCourses: ExtendedCourse[];
+  suggestedCourses: ExtendedCourse[];
+}
+
 // === Tutors ===
 
 export interface Tutor {
@@ -130,4 +153,29 @@ export interface Tutor {
   name: string;
   subject: string;
   contact: string;
+}
+
+// === Application Dates ===
+
+export interface ApplicationEntry {
+  id: string;
+  institutionName: string;
+  openDate: string; // ISO 8601 format
+  closeDate: string; // ISO 8601 format
+  applicationFee: number;
+  portalUrl: string;
+}
+
+export interface ApplicationDatesRequest {
+  institutionName?: string;
+  openDateFrom?: string;
+  openDateTo?: string;
+  closeDateFrom?: string;
+  closeDateTo?: string;
+  minFee?: number;
+  maxFee?: number;
+}
+
+export interface ApplicationDatesResponse {
+  entries: ApplicationEntry[];
 }

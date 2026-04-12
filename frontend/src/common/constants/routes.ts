@@ -15,4 +15,7 @@ export const ROUTES = {
   CareerGuidance: 'CareerGuidance',
   CareerAspirations: 'CareerAspirations',
   CourseResults: 'CourseResults',
+  QualificationCheck: 'QualificationCheck',
+  QualificationResults: 'QualificationResults',
+  ApplicationDates: 'ApplicationDates',
 } as const;

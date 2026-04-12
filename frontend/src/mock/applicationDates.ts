@@ -1,0 +1,60 @@
+import {ApplicationEntry} from '../api/types';
+
+export const mockApplicationDates: ApplicationEntry[] = [
+  {
+    id: '1',
+    institutionName: 'University of Cape Town',
+    openDate: '2026-03-01T00:00:00Z',
+    closeDate: '2026-06-30T00:00:00Z',
+    applicationFee: 100,
+    portalUrl: 'https://applyonline.uct.ac.za',
+  },
+  {
+    id: '2',
+    institutionName: 'University of the Witwatersrand',
+    openDate: '2026-04-01T00:00:00Z',
+    closeDate: '2026-09-30T00:00:00Z',
+    applicationFee: 200,
+    portalUrl: 'https://self-service.wits.ac.za',
+  },
+  {
+    id: '3',
+    institutionName: 'Stellenbosch University',
+    openDate: '2026-05-01T00:00:00Z',
+    closeDate: '2026-08-31T00:00:00Z',
+    applicationFee: 100,
+    portalUrl: 'https://apps.sun.ac.za',
+  },
+  {
+    id: '4',
+    institutionName: 'University of Pretoria',
+    openDate: '2026-01-15T00:00:00Z',
+    closeDate: '2026-07-31T00:00:00Z',
+    applicationFee: 300,
+    portalUrl: 'https://www.up.ac.za/apply',
+  },
+  {
+    id: '5',
+    institutionName: 'University of KwaZulu-Natal',
+    openDate: '2026-06-01T00:00:00Z',
+    closeDate: '2026-10-31T00:00:00Z',
+    applicationFee: 250,
+    portalUrl: 'https://applications.ukzn.ac.za',
+  },
+  {
+    id: '6',
+    institutionName: 'Durban University of Technology',
+    openDate: '2025-09-01T00:00:00Z',
+    closeDate: '2025-11-30T00:00:00Z',
+    applicationFee: 0,
+    portalUrl: 'https://www.dut.ac.za/apply',
+  },
+  {
+    id: '7',
+    institutionName: 'University of Johannesburg',
+    openDate: '2026-02-01T00:00:00Z',
+    closeDate: '2026-10-31T00:00:00Z',
+    applicationFee: 0,
+    portalUrl: 'https://www.uj.ac.za/apply',
+  },
+];

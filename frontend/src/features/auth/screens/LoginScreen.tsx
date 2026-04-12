@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
@@ -42,6 +42,12 @@ const LoginScreen: React.FC = () => {
   return (
     <ScreenWrapper>
       <View style={styles.container}>
+        <Image
+          source={require('../../../../logo.png')}
+          style={styles.logo}
+          resizeMode="contain"
+          accessibilityLabel="Univice logo"
+        />
         <AppText variant="heading" center style={styles.title}>
           Welcome Back
         </AppText>
@@ -126,6 +132,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: Spacing.lg,
+  },
+  logo: {
+    width: 120,
+    height: 120,
+    alignSelf: 'center',
+    marginBottom: Spacing.lg,
   },
   title: {
     marginBottom: Spacing.sm,

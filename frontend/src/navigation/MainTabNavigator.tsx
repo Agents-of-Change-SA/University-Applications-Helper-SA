@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ROUTES} from '../common/constants/routes';
-import {CourseResult} from '../api/types';
+import {CourseResult, QualificationCheckResponse} from '../api/types';
 import HomeScreen from '../features/home/screens/HomeScreen';
 import CourseSearchScreen from '../features/courses/screens/CourseSearchScreen';
 import CourseResultsScreen from '../features/courses/screens/CourseResultsScreen';
@@ -12,11 +12,15 @@ import UserDetailsScreen from '../features/profile/screens/UserDetailsScreen';
 import SchoolProfileScreen from '../features/school/screens/SchoolProfileScreen';
 import CareerGuidanceScreen from '../features/careers/screens/CareerGuidanceScreen';
 import CareerAspirationsScreen from '../features/careers/screens/CareerAspirationsScreen';
+import QualificationCheckScreen from '../features/courses/screens/QualificationCheckScreen';
+import QualificationResultsScreen from '../features/courses/screens/QualificationResultsScreen';
+import ApplicationDatesScreen from '../features/applications/screens/ApplicationDatesScreen';
 
 // -- Home Stack --
 export type HomeStackParamList = {
   [ROUTES.Home]: undefined;
   [ROUTES.CareerGuidance]: undefined;
+  [ROUTES.ApplicationDates]: {institutionName?: string} | undefined;
 };
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -28,6 +32,10 @@ const HomeStackScreen: React.FC = () => (
       name={ROUTES.CareerGuidance}
       component={CareerGuidanceScreen}
     />
+    <HomeStack.Screen
+      name={ROUTES.ApplicationDates}
+      component={ApplicationDatesScreen}
+    />
   </HomeStack.Navigator>
 );
 
@@ -35,6 +43,8 @@ const HomeStackScreen: React.FC = () => (
 export type CourseStackParamList = {
   [ROUTES.CourseSearch]: undefined;
   [ROUTES.CourseResults]: {topResult: CourseResult | null; results: CourseResult[]};
+  [ROUTES.QualificationCheck]: undefined;
+  [ROUTES.QualificationResults]: {response: QualificationCheckResponse};
 };
 
 const CourseStack = createNativeStackNavigator<CourseStackParamList>();
@@ -48,6 +58,14 @@ const CourseStackScreen: React.FC = () => (
     <CourseStack.Screen
       name={ROUTES.CourseResults}
       component={CourseResultsScreen}
+    />
+    <CourseStack.Screen
+      name={ROUTES.QualificationCheck}
+      component={QualificationCheckScreen}
+    />
+    <CourseStack.Screen
+      name={ROUTES.QualificationResults}
+      component={QualificationResultsScreen}
     />
   </CourseStack.Navigator>
 );

@@ -20,6 +20,7 @@ const FILTER_OPTIONS = [
   {label: 'Courses', value: 'courses'},
   {label: 'Tutors', value: 'tutors'},
   {label: 'Careers', value: 'careers'},
+  {label: 'Applications', value: 'applications'},
 ];
 
 const HomeScreen: React.FC = () => {
@@ -37,6 +38,10 @@ const HomeScreen: React.FC = () => {
 
   const navigateToTutors = () => {
     navigation.getParent()?.navigate('TutorsTab');
+  };
+
+  const navigateToApplicationDates = () => {
+    navigation.navigate(ROUTES.ApplicationDates);
   };
 
   return (
@@ -89,6 +94,12 @@ const HomeScreen: React.FC = () => {
           title="Find Tutors"
           icon="👩‍🏫"
           onPress={navigateToTutors}
+        />
+        <View style={styles.quickActionGap} />
+        <QuickActionCard
+          title="Application Dates"
+          icon="📅"
+          onPress={navigateToApplicationDates}
         />
       </View>
     </ScreenWrapper>
